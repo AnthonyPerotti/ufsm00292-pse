@@ -40,6 +40,7 @@ void tarefa_5(void);
 void tarefa_6(void);
 void tarefa_7(void);
 void tarefa_8(void);
+void tarefa_9(void);
 
 /*
  * Configuracao dos tamanhos das pilhas
@@ -52,6 +53,7 @@ void tarefa_8(void);
 #define TAM_PILHA_6			(TAM_MINIMO_PILHA + 24)
 #define TAM_PILHA_7			(TAM_MINIMO_PILHA + 24)
 #define TAM_PILHA_8			(TAM_MINIMO_PILHA + 24)
+#define TAM_PILHA_9			(TAM_MINIMO_PILHA + 24)
 #define TAM_PILHA_OCIOSA	(TAM_MINIMO_PILHA + 24)
 
 /*
@@ -65,6 +67,7 @@ uint32_t PILHA_TAREFA_5[TAM_PILHA_5];
 uint32_t PILHA_TAREFA_6[TAM_PILHA_6];
 uint32_t PILHA_TAREFA_7[TAM_PILHA_7];
 uint32_t PILHA_TAREFA_8[TAM_PILHA_8];
+uint32_t PILHA_TAREFA_9[TAM_PILHA_9];
 uint32_t PILHA_TAREFA_OCIOSA[TAM_PILHA_OCIOSA];
 
 /*
@@ -243,5 +246,22 @@ void tarefa_8(void)
 		(void)valor;	/* leitura da variável para evitar aviso (warning) do compilador */
 		
 		SemaforoLibera(&SemaforoVazio);
+	}
+}
+
+void tarefa_9(void)
+{
+	volatile uint16_t a = 0;
+	for(;;)
+	{
+		a++;	
+			
+		/* Liga LED. */
+		port_pin_set_output_level(LED_0_PIN, LED_0_ACTIVE);
+		TarefaEspera(500); 	/* tarefa 1 se coloca em espera por 3 marcas de tempo (ticks) */
+		
+		/* Desliga LED. */
+		port_pin_set_output_level(LED_0_PIN, !LED_0_ACTIVE);
+		TarefaEspera(500); 	/* tarefa 1 se coloca em espera por 3 marcas de tempo (ticks) */
 	}
 }
