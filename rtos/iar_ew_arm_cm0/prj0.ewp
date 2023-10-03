@@ -2121,9 +2121,9 @@
         <name>$PROJ_DIR$\main.c</name>
     </file>
     <file>
-        <name>$PROJ_DIR$\rtos.c</name>
+        <name>$PROJ_DIR$\multitarefas.c</name>
     </file>
     <file>
-        <name>$PROJ_DIR$\rtos.h</name>
+        <name>$PROJ_DIR$\multitarefas.h</name>
     </file>
 </project>
